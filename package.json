@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/luizotavioautomacao/yusuki/issues"
   },
-  "homepage": "https://github.com/luizotavioautomacao/yusuki#readme"
+  "homepage": "https://github.com/luizotavioautomacao/yusuki#readme",
+  "devDependencies": {
+    "git-commit-msg-linter": "^5.0.8"
+  }
 }
