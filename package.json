@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/luizotavioautomacao/yusuki#readme",
   "devDependencies": {
-    "git-commit-msg-linter": "^5.0.8"
+    "@types/node": "^24.7.1",
+    "git-commit-msg-linter": "^5.0.8",
+    "typescript": "^5.9.3"
   }
 }
