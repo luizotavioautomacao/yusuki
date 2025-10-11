@@ -1,0 +1,23 @@
+{
+  "name": "yusuki",
+  "version": "1.0.0",
+  "description": "SOLID project with Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luizotavioautomacao/yusuki.git"
+  },
+  "keywords": [
+    "solid",
+    "node.js"
+  ],
+  "author": "Luiz Otávio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luizotavioautomacao/yusuki/issues"
+  },
+  "homepage": "https://github.com/luizotavioautomacao/yusuki#readme"
+}
