@@ -19,6 +19,15 @@ const makeEmailValidator = (): EmailValidator => {
     return new EmailValidatorStub()
 }
 
+const makeEmailValidatorWithError = (): EmailValidator => {
+    class EmailValidatorStub implements EmailValidator {
+        isValid(): boolean {
+            throw new Error()
+        }
+    }
+    return new EmailValidatorStub()
+}
+
 const makeSut = (): SutTypes => {
     const emailValidator = makeEmailValidator()
     return {
@@ -117,12 +126,7 @@ describe('SignUp Controller', () => {
     })
 
     test('Should return 500 if EmailValidator throws', () => {
-        class EmailValidatorStubWithError implements EmailValidator {
-            isValid(): boolean {
-                throw Error()
-            }
-        }
-        const emailValidatorStub = new EmailValidatorStubWithError()
+        const emailValidatorStub = makeEmailValidatorWithError()
         const sut = new SignUpController(emailValidatorStub)
         const httpRequest = {
             body: {
