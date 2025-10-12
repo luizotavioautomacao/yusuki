@@ -19,6 +19,7 @@ add "npm run test:staged" no lintstaged
 #### Aula 6 (branch 002)
 presentation/controllers/signup-controller.spec.ts
 presentation/controllers/signup-controller.ts
+no name; no email; no password; no passwordConfirmation
 #### Aula 7 (branch 003)
 presentation/protocols/http.ts
 presentation/helpers/http-helper.ts
@@ -32,3 +33,13 @@ stub -> retorno marretado
 class EmailValidatorStub implements EmailValidator
 interface SutTypes
 add constructor on SignUpController and rules to calls isValid
+#### Aula 9 (branch 005)
+###### Factory
+should calls emailValidator with correct email
+should return 500 if emailValidator throws
+presentation/errors/server-param-error.ts
+index.ts
+makeEmailValidator
+makeEmailValidatorWithError
+
+1 classe pode implementar várias interfaces diferentes
