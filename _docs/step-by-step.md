@@ -19,8 +19,16 @@ add "npm run test:staged" no lintstaged
 #### Aula 6 (branch 002)
 presentation/controllers/signup-controller.spec.ts
 presentation/controllers/signup-controller.ts
-#### Aula 7 
+#### Aula 7 (branch 003)
 presentation/protocols/http.ts
 presentation/helpers/http-helper.ts
 presentation/errors/missing-param-error.ts
 presentation/protocols/controller.ts
+#### Aula 8 (branch 004)
+###### aplicando inversão de dependência
+const makeSut on presentation/controllers/signup.spec.ts
+Tipos de mocks: stub, spy, fake
+stub -> retorno marretado
+class EmailValidatorStub implements EmailValidator
+interface SutTypes
+add constructor on SignUpController and rules to calls isValid
