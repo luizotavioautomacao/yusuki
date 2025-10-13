@@ -7,6 +7,13 @@ import { EmailValidator } from "../protocols/email-validator";
 import { HttpRequest, HttpResponse } from "../protocols/http";
 import { SignUpController } from "./signup";
 
+const fakeAccount = {
+    id: 'valid_id',
+    name: 'valid_name',
+    email: 'valid_email@mail.com',
+    password: 'valid_password',
+}
+
 const makeEmailValidator = (): EmailValidator => {
     class EmailValidatorStub implements EmailValidator {
         isValid(): boolean {
@@ -19,12 +26,7 @@ const makeEmailValidator = (): EmailValidator => {
 const makeAddAccount = (): IAddAccount => {
     class AddAccountStub implements IAddAccount {
         add(account: IAddAccountModel): IAccountModel {
-            return {
-                id: 'valid_id',
-                name: 'valid_name',
-                email: 'valid_email@mail.com',
-                password: 'valid_password',
-            }
+            return fakeAccount
         }
     }
     return new AddAccountStub()
@@ -205,6 +207,21 @@ describe('SignUp Controller', () => {
         const httpResponse: HttpResponse = sut.handle(httpRequest)
         expect(httpResponse.statusCode).toBe(500);
         expect(httpResponse.body).toEqual(new ServerError())
+    })
+
+    test('Should return 200 if valid data is provided', () => {
+        const { sut } = makeSut()
+        const httpRequest = {
+            body: {
+                name: 'valid_name',
+                email: 'valid_email@mail.com',
+                password: 'valid_password',
+                passwordConfirmation: 'valid_password'
+            }
+        }
+        const httpResponse: HttpResponse = sut.handle(httpRequest)
+        expect(httpResponse.statusCode).toBe(200);
+        expect(httpResponse.body).toEqual(fakeAccount)
     })
 
 })
