@@ -13,7 +13,7 @@ const makeSut = (): EmailValidatorAdapter => {
     return new EmailValidatorAdapter()
 }
 
-describe('', () => {
+describe('EmailValidatorAdapter', () => {
 
     test('Should return false if validator returns false', async () => {
         const sut = makeSut()
