@@ -7,18 +7,22 @@ const account = {
     password: 'valid_password'
 }
 
+const makeEncrypter = (): IEncrypter => {
+    class EncrypterStub implements IEncrypter {
+        encrypt(password: string): Promise<string> {
+            return new Promise(resolve => resolve('hashed_password'))
+        }
+    }
+    return new EncrypterStub()
+}
+
 interface SutType {
     sut: DbAddAccount
     encrypterStub: IEncrypter
 }
 
 const makeSut = (): SutType => {
-    class EncrypterStub implements IEncrypter {
-        encrypt(password: string): Promise<string> {
-            return new Promise(resolve => resolve('hashed_password'))
-        }
-    }
-    const encrypterStub = new EncrypterStub()
+    const encrypterStub = makeEncrypter()
     const sut = new DbAddAccount(encrypterStub)
     return {
         sut,
