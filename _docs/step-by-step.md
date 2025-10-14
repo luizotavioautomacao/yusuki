@@ -76,3 +76,12 @@ npm i validator
 npm i -D @types/validator
 should call validator with correct email
 makeSut
+#### Aula 13 (branch 009-db-add-account)
+data/usecases/db-add-account.spec.ts
+should call encrypter with correct password
+EncrypterStub
+data/usecases/db-add-accunt.ts
+data/protocols/encrypter
+makeSut()
+makeEncrypter()
+should throw if encrypter throws => jest.spyOn(encrypterStub, 'encrypt').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
