@@ -92,3 +92,13 @@ Should throw if AddAccountRepository throws
 O caso de sucesso não mocka! Mocka somente quando quer retornar o erro!
 Comparar objetos => toEqual
 Should return an account on success
+#### Aula 15 (branch 011-bcrypt-adapter)
+infra/criptography/bcrypt-adapter.spec.ts => implementação do protocolo de IEncrypter (src/data/protocols/encrypter.ts)
+Should call bcrypt with correct values
+npm i bcrypt
+npm i @types/bcrypt -D
+feat: ensure BcryptAdapter calls bcrypt with correct values
+Should return a hash on success
+jest.mock('bcrypt',()=>{ resolve(hash_value)})
+makeSut()
+Should throw if bcrypt throws
