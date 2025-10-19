@@ -85,3 +85,10 @@ data/protocols/encrypter
 makeSut()
 makeEncrypter()
 should throw if encrypter throws => jest.spyOn(encrypterStub, 'encrypt').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
+#### Aula 14 (branch 010-db-add-account-repository)
+Should call AddAccountRepository with correct values
+makeAddAccountRepository
+Should throw if AddAccountRepository throws
+O caso de sucesso não mocka! Mocka somente quando quer retornar o erro!
+Comparar objetos => toEqual
+Should return an account on success
