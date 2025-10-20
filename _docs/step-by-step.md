@@ -122,3 +122,33 @@ troca _id por id
 makeSut
 infra/db/mongodb/account/account-mapper.ts => transferir p/ helper
 Should return an account on success
+#### Aula 18 (branch 014-middlewares-express)
+main/server.ts
+npm i express
+npm i @types/express -D
+npm i sucrase -D
+app = express()
+app.listen
+npm start: sucrase-node src/main/server.ts
+main/config/app.ts
+main/config/middlewares.ts
+main/middlewares/body-parser.test.ts -> simula requisição com supertest
+npm i -D supertest @types/supertest
+Body Parser Middleware / Should parse body as json
+main/middlewares/body-parser.ts
+bodyParser = json()
+app.user(bodyParser)
+setupMiddlewares
+ensure requests parse body as json
+main/middlewares/cors.test.ts
+Should enable CORS
+res.set('access-control-allow-origin', '*')
+res.set('access-control-allow-methods', '*')
+res.set('access-control-allow-headers', '*')
+next()
+content-type.test.ts
+content-type.ts
+should return default content type as json
+res.type('json')
+force xml
+should return xml content type when forced
