@@ -67,3 +67,12 @@ test:ci npm test -- --coverage
 O "--" é para herdar do script que foi chamado, no caso: npm test 
 add pre-push: npm run test:ci no husky
 coverage/lcov/index.html (arquivo com detalhes da cobertura de testes)
+#### Aula 12 (branch 008-email-validator-adapter)
+utils/email-validator-adapter.spec.ts
+utils/email-validator-adapter.ts
+should return false if validator returns false
+should return true if validator returns true
+npm i validator
+npm i -D @types/validator
+should call validator with correct email
+makeSut
