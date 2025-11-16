@@ -102,3 +102,14 @@ Should return a hash on success
 jest.mock('bcrypt',()=>{ resolve(hash_value)})
 makeSut()
 Should throw if bcrypt throws
+#### Aula 16 (branch 012-config-mongodb)
+https://github.com/shelfio/jest-mongodb
+https://jestjs.io/docs/mongodb
+npm install --save-dev @shelf/jest-mongodb
+npm i @types/mongodb -D
+npm i mongodb
+infra/db/mongodb/account/account-repository.spec.ts
+Account Mongo Repository
+Should return an account on success
+AccountMongoRepository
+infra/db/mongodb/helpers/mongo-helper.ts
