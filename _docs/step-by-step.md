@@ -113,3 +113,12 @@ Account Mongo Repository
 Should return an account on success
 AccountMongoRepository
 infra/db/mongodb/helpers/mongo-helper.ts
+#### Aula 17 (branch 013-test-mongodb)
+AccountMongoRepository
+MongoHelper.getCollection(name)
+.insertOne(accountData)
+result.ops[0]
+troca _id por id
+makeSut
+infra/db/mongodb/account/account-mapper.ts => transferir p/ helper
+Should return an account on success
