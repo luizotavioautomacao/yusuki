@@ -1,6 +1,7 @@
+#### Aula 4 (branch 001)
 npm init
 npm i -D git-commit-msg-linter
-npm i -D typescript @types/node ts-nodenpm i 
+npm i -D typescript @types/node ts-node
 https://node.green
 https://standardjs.com
 https://github.com/mightyiam/eslint-config-love
@@ -15,3 +16,11 @@ npm i -D jest @types/jest ts-jest
 npm init jest@latest
 add "npm run test:staged" no lintstaged 
 -> Não vai passar/commitar código defeituoso nem teste falhando
+#### Aula 6 (branch 002)
+presentation/controllers/signup-controller.spec.ts
+presentation/controllers/signup-controller.ts
+#### Aula 7 
+presentation/protocols/http.ts
+presentation/helpers/http-helper.ts
+presentation/errors/missing-param-error.ts
+presentation/protocols/controller.ts
