@@ -1,5 +1,6 @@
 import { InvalidParamError } from "../errors/invalid-param-error";
 import { MissingParamError } from "../errors/missing-param-error";
+import { ServerError } from "../errors/server-param-error";
 import { EmailValidator } from "../protocols/email-validator";
 import { HttpRequest, HttpResponse } from "../protocols/http";
 import { SignUpController } from "./signup";
@@ -9,13 +10,26 @@ interface SutTypes {
     emailValidatorStub: EmailValidator
 }
 
-const makeSut = (): SutTypes => {
+const makeEmailValidator = (): EmailValidator => {
     class EmailValidatorStub implements EmailValidator {
         isValid(): boolean {
             return true
         }
     }
-    const emailValidator = new EmailValidatorStub()
+    return new EmailValidatorStub()
+}
+
+const makeEmailValidatorWithError = (): EmailValidator => {
+    class EmailValidatorStub implements EmailValidator {
+        isValid(): boolean {
+            throw new Error()
+        }
+    }
+    return new EmailValidatorStub()
+}
+
+const makeSut = (): SutTypes => {
+    const emailValidator = makeEmailValidator()
     return {
         sut: new SignUpController(emailValidator),
         emailValidatorStub: emailValidator
@@ -94,6 +108,37 @@ describe('SignUp Controller', () => {
         const httpResponse: HttpResponse = sut.handle(httpRequest)
         expect(httpResponse.statusCode).toBe(400);
         expect(httpResponse.body).toEqual(new InvalidParamError('email'))
+    })
+
+    test('Should calls EmailValidator with correct email', () => {
+        const { sut, emailValidatorStub } = makeSut()
+        const isValid = jest.spyOn(emailValidatorStub, "isValid")
+        const httpRequest = {
+            body: {
+                name: 'any_name',
+                email: 'any_email@mail.com',
+                password: 'any_password',
+                passwordConfirmation: 'any_password'
+            }
+        }
+        sut.handle(httpRequest)
+        expect(isValid).toHaveBeenCalledWith(httpRequest.body.email)
+    })
+
+    test('Should return 500 if EmailValidator throws', () => {
+        const emailValidatorStub = makeEmailValidatorWithError()
+        const sut = new SignUpController(emailValidatorStub)
+        const httpRequest = {
+            body: {
+                name: 'any_name',
+                email: 'any_email@mail.com',
+                password: 'any_password',
+                passwordConfirmation: 'any_password'
+            }
+        }
+        const httpResponse: HttpResponse = sut.handle(httpRequest)
+        expect(httpResponse.statusCode).toBe(500);
+        expect(httpResponse.body).toEqual(new ServerError())
     })
 
 })
