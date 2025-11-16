@@ -1,0 +1,42 @@
+{
+  "name": "yusuki",
+  "version": "1.0.0",
+  "description": "SOLID project with Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:staged": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luizotavioautomacao/yusuki.git"
+  },
+  "keywords": [
+    "solid",
+    "node.js"
+  ],
+  "author": "Luiz Otávio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luizotavioautomacao/yusuki/issues"
+  },
+  "homepage": "https://github.com/luizotavioautomacao/yusuki#readme",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.7.1",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.57.1",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.6.0",
+    "git-commit-msg-linter": "^5.0.8",
+    "husky": "^9.1.7",
+    "jest": "^30.2.0",
+    "lint-staged": "^16.2.3",
+    "ts-jest": "^29.4.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
