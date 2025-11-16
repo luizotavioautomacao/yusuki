@@ -169,3 +169,19 @@ src/main/routes/signup-routes.test.ts => Should return an account on success
   .send(fakeAccount) 
 .expect(200)
 feat: add SignUp returns 200 on success
+#### Aula 21 (016-reconnect-mongodb)
+src/infra/db/helpers/mongo-helper.spec.ts
+Should reconnect if mongo is down
+MongoHelper as sut 
+sut.connect; sut.getCollection('accounts')
+async disconnect(): Promise<void> {
+        this.client.close()
+        this.client = null
+    },
+test('Should reconnect if mongo is down', async () => {
+        let accountCollection = await sut.getCollection('accounts')
+        expect(accountCollection).toBeTruthy()
+        await sut.disconnect()
+        accountCollection = await sut.getCollection('accounts')
+        expect(accountCollection).toBeTruthy()
+    })
