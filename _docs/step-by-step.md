@@ -152,3 +152,20 @@ should return default content type as json
 res.type('json')
 force xml
 should return xml content type when forced
+#### Aula 19 (branch 015-routes)
+main/config/routes.ts
+setupRoutes
+Router (express)
+npm i fast-glop 
+import fg from 'fast-glob'
+fb.sync('**/src/main/routes/**routes.ts').map(file => console.log(file))
+.map(async file => { const route = (await import(`../../../${file}`)).default })
+route(router)
+const router = Router()
+app.use('/api',router)
+src/main/routes/signup-routes.ts => export default Router => router.post('signup', req, res => res.json())
+src/main/routes/signup-routes.test.ts => Should return an account on success
+  .post('/api/signup')
+  .send(fakeAccount) 
+.expect(200)
+feat: add SignUp returns 200 on success
