@@ -53,3 +53,17 @@ should return 500 if AddAccount throws / ensure SingUpController ...
 should return 200 if valid data is provided
 http-help ok
 refactor to async/await
+#### Aula 11 (branch 007-jest)
+test jest --passWithNoTests --silent --noStackTrace --runInBand
+--noStackTrace => remover a linha do erro
+-- runInBand => roda testes sequencial (não roda em paralelo), aumentando a confiabilidade do teste
+test:verbose jest --passWithNoTests --runInBand
+add jest-unit-config.js
+test:unit npm test -- --watch -c jest-unit-config.js
+add jest-integration-config.js
+test:integration npm test -- --watch -c jest-integration-config.js
+test:staged npm test -- --findRelatedTests
+test:ci npm test -- --coverage
+O "--" é para herdar do script que foi chamado, no caso: npm test 
+add pre-push: npm run test:ci no husky
+coverage/lcov/index.html (arquivo com detalhes da cobertura de testes)
